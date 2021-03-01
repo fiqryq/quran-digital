@@ -1,16 +1,14 @@
 <template>
   <div>
-    <div class="jumbotron">
-      <div class="loading" v-if="loading">Loading.....</div>
-      <div class="list" v-else>
-        <ul>
-          <li v-for="(surah, index) in surah" :key="index">
-            <router-link v-bind:to="'/surah/' + surah.number">{{
-              surah.name.translation.id
-            }}</router-link>
-          </li>
-        </ul>
-      </div>
+    <div class="loading" v-if="loading">Loading.....</div>
+    <div class="list" v-else>
+      <ul>
+        <li v-for="(surah, index) in surah" :key="index">
+          <router-link v-bind:to="'/surah/' + surah.number">{{
+            surah.name.translation.id
+          }}</router-link>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
