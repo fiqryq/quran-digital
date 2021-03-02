@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <List />
+    <div class="content my-3">
+      <List />
+    </div>
   </div>
 </template>
 

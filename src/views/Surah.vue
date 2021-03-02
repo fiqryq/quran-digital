@@ -1,12 +1,18 @@
 <template>
   <div class="surah-detail">
-    <h1>Surat {{ surah.id }}</h1>
-    <!-- Perulangan -->
-
-    <div class="content" v-for="(ayat, index) in ayat" :key="index">
-      <p>{{ ayat.number.inSurah }}</p>
-      <p>{{ ayat.text.arab }}</p>
-      <p>{{ ayat.text.transliteration.en }}</p>
+    <div class="container py-4">
+      <h1>Surat {{ surah.id }}</h1>
+    </div>
+    <div class="container">
+      <ul class="list-unstyled">
+        <li class="media" v-for="(ayat, index) in ayat" :key="index">
+          <p>{{ ayat.number.inSurah }}</p>
+          <div class="media-body">
+            <h3>{{ ayat.text.arab }}</h3>
+            <p>{{ ayat.text.transliteration.en }}</p>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -41,3 +47,4 @@ export default {
   }
 };
 </script>
+<style scoped></style>

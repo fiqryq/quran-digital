@@ -1,29 +1,48 @@
 <template>
   <div>
+    <div class="row align-item-center justify-content-center">
+      <form class=" col-sm-10 col-lg-10 col-xl-7">
+        <input
+          class="form-control form-control-lg mb-3"
+          type="text"
+          v-model="search"
+          placeholder="cari surat"
+        />
+      </form>
+    </div>
     <div class="container">
-      <input type="text" v-model="search" placeholder="cari surat" />
       <div class="loading" v-if="loading">
         <div class="spinner-grow" role="status">
           <span class="sr-only">Loading...</span>
         </div>
       </div>
-      <div v-else>
-        <div class="card-group">
-          <div class="row">
-            <div
-              class="col-4"
-              v-for="(surah, index) in filterSurah"
-              :key="index"
-            >
-              <router-link v-bind:to="'/surah/' + surah.number">
-                <div class="card mb-5">
-                  <div class="card-body">
-                    <div class="card-title">
-                      {{ surah.name.transliteration.id }}
+      <div class="content-surah" v-else>
+        <div class="row">
+          <div
+            class="col-xl-4 col-sm-6 col-12 p-1"
+            v-for="(surah, index) in filterSurah"
+            :key="index"
+          >
+            <div class="card">
+              <div class="card-content">
+                <div class="card-body">
+                  <div class="media d-flex">
+                    <div class="media-body text-left">
+                      <h3 class="surah-name">
+                        <router-link v-bind:to="'/surah/' + surah.number">
+                          {{ surah.name.transliteration.id }}
+                        </router-link>
+                      </h3>
+                      <span class="text-muted">{{
+                        surah.name.translation.id
+                      }}</span>
+                    </div>
+                    <div class="align-self-center">
+                      <h3 class="surah-name-arab">{{ surah.name.short }}</h3>
                     </div>
                   </div>
                 </div>
-              </router-link>
+              </div>
             </div>
           </div>
         </div>
@@ -37,6 +56,7 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 
+// Base URL
 const url = "https://api.quran.sutanlab.id/surah/";
 
 export default {
@@ -68,10 +88,6 @@ export default {
 };
 </script>
 <style scope>
-.card {
-  max-width: 400px;
-  width: 300px;
-}
 .loading {
   width: 100%;
   max-width: 700px;
@@ -80,5 +96,30 @@ export default {
   height: 100vh;
   display: flex;
   justify-content: center;
+}
+
+.card {
+  border: none;
+}
+
+.form-control {
+  border: none;
+}
+/* Remove Underline Router link */
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* Color title */
+.surah-name a {
+  color: rgb(0, 194, 32);
+}
+
+.surah-name a:hover {
+  color: rgb(0, 148, 25);
 }
 </style>
