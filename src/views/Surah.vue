@@ -1,15 +1,18 @@
 <template>
   <div class="surah-detail">
-    <div class="container py-4">
-      <h1>Surat {{ surah.id }}</h1>
+    <div class="container py-4 text-center">
+      <h3>Surat {{ surah.id }}</h3>
     </div>
     <div class="container">
-      <ul class="list-unstyled">
+      <ul class="list-unstyled mt-4">
         <li class="media" v-for="(ayat, index) in ayat" :key="index">
-          <p>{{ ayat.number.inSurah }}</p>
-          <div class="media-body">
-            <h3>{{ ayat.text.arab }}</h3>
-            <p>{{ ayat.text.transliteration.en }}</p>
+          <hr />
+          <p class="badge badge-secondary text-wrap p-2">
+            {{ ayat.number.inSurah }}
+          </p>
+          <div class="media-body mb-3">
+            <h3 class="text-right">{{ ayat.text.arab }}</h3>
+            <p class="ml-2">{{ ayat.text.transliteration.en }}</p>
           </div>
         </li>
       </ul>
@@ -47,4 +50,8 @@ export default {
   }
 };
 </script>
-<style scoped></style>
+<style scoped>
+.container {
+  max-width: 800px;
+}
+</style>
