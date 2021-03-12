@@ -1,16 +1,20 @@
 <template>
   <div>
-    <div class="row align-item-center justify-content-center">
-      <form class="col-sm-10 col-md-10 col-lg-10 col-xl-7">
-        <input
-          class="form-control form-control-lg mb-3"
-          type="text"
-          v-model="search"
-          placeholder="cari surat"
-        />
-      </form>
-    </div>
+    <!-- container searchbox -->
     <div class="container">
+      <div class="row align-item-center justify-content-center">
+        <form class="col-xl-12 col-md-12 col-lg-12 col-sm-12 col-12 p-1 mt-4">
+          <input
+            class="form-control form-control-lg mb-1"
+            type="text"
+            v-model="search"
+            placeholder="cari surat"
+          />
+        </form>
+      </div>
+    </div>
+    <!-- Container surah -->
+    <div class="container mb-3">
       <div class="loading" v-if="loading">
         <div class="spinner-grow" role="status">
           <span class="sr-only">Loading...</span>
@@ -51,13 +55,8 @@
   </div>
 </template>
 <script>
-import Vue from "vue";
 import axios from "axios";
-import VueAxios from "vue-axios";
-Vue.use(VueAxios, axios);
-
-// Base URL
-const url = "https://api.quran.sutanlab.id/surah/";
+import config from "../util/config.js";
 
 export default {
   data() {
@@ -69,7 +68,7 @@ export default {
   },
   created() {
     axios
-      .get(url)
+      .get(`${config.baseUrl}/surah`)
       .then(response => {
         this.surah = response.data.data;
       })
