@@ -1,6 +1,11 @@
 <template>
   <div class="surah-detail">
-    <div class="container text-center my-5">
+    <div class="loading" v-if="loading">
+      <div class="spinner-grow" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <div class="container text-center my-5" v-else>
       <h3>Surat {{ surah.id }}</h3>
     </div>
     <div class="container">
@@ -36,6 +41,7 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
+      loading: true,
       surah: {},
       ayat: null,
       prebismillah: {}
@@ -52,7 +58,7 @@ export default {
       .catch(error => {
         console.log(error);
       })
-      .finally();
+      .finally((this.loading = false));
   }
 };
 </script>
