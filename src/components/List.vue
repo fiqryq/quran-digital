@@ -5,10 +5,10 @@
       <div class="row align-item-center justify-content-center">
         <form class="col-xl-12 col-md-12 col-lg-12 col-sm-12 col-12 p-1 mt-4">
           <input
-            class="form-control form-control-lg mb-1"
+            class="form-control form-control-lg mb-1 font-italic"
             type="text"
             v-model="search"
-            placeholder="cari surat"
+            placeholder="cari surat..."
           />
         </form>
       </div>
@@ -80,7 +80,11 @@ export default {
   computed: {
     filterSurah: function() {
       return this.surah.filter(surah => {
-        return surah.name.transliteration.id.toLowerCase().match(this.search);
+        return surah.name.transliteration.id
+          .toLowerCase()
+          .split("-")
+          .join(" ")
+          .match(this.search);
       });
     }
   }
