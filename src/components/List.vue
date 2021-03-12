@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row align-item-center justify-content-center">
-      <form class=" col-sm-10 col-lg-10 col-xl-7">
+      <form class="col-sm-10 col-md-10 col-lg-10 col-xl-7">
         <input
           class="form-control form-control-lg mb-3"
           type="text"
@@ -81,7 +81,7 @@ export default {
   computed: {
     filterSurah: function() {
       return this.surah.filter(surah => {
-        return surah.name.transliteration.id.match(this.search);
+        return surah.name.transliteration.id.toLowerCase().match(this.search);
       });
     }
   }
