@@ -10,12 +10,17 @@
           <p class="badge badge-secondary text-wrap p-2">
             {{ ayat.number.inSurah }}
           </p>
-          <div class="media-body mb-3">
+          <div class="media-body mb-4">
             <h3 class="text-right">{{ ayat.text.arab }}</h3>
             <audio controls>
               <source :src="ayat.audio.primary" type="audio/mpeg" />
             </audio>
-            <p class="ml-2">{{ ayat.text.transliteration.en }}</p>
+            <p>
+              <strong> {{ ayat.text.transliteration.en }} </strong>
+            </p>
+            <quote class="text-muted font-italic">{{
+              ayat.translation.id
+            }}</quote>
           </div>
         </li>
       </ul>
